@@ -50,8 +50,6 @@ function App() {
         isResizable={true}
         breakpoints={breakpoints}
         cols={cols}
-        preventCollision={true}
-        autoSize={false}
       >
         <div key="1" id="1" data-grid={{ x: 0, y: 0, w: 1, h: 3.5 }}>
           <UserForm reLoading={reLoading} setreLoading={setreLoading} selectedUser={selectedUser}/>
