@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import InputBox from "../atoms/input.atom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -19,12 +19,12 @@ const validationSchema = Yup.object().shape({
 export default function UserForm(props: any) {
   let { selectedUser, reLoading, setreLoading } = props;
 
-  const [initialValues, setInitialValues] = useState({
+  const initialValues = {
     first_name: "",
     last_name: "",
     email: "",
     _id: "",
-  });
+  };
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -38,13 +38,13 @@ export default function UserForm(props: any) {
         if (values._id == "") {
           let value:any = values;
           value._id = undefined;
-          postUserData(value).then((res: any) => {
+          postUserData(value).then(() => {
             alert("User Added");
             formik.resetForm();
             setreLoading(!reLoading);
           });
         } else {
-          updateUserData(values).then((res) => {
+          updateUserData(values).then(() => {
             alert("User Updated");
             formik.resetForm();
             setreLoading(!reLoading);
@@ -117,7 +117,7 @@ export default function UserForm(props: any) {
 
           <button
             type="button"
-            onClick={(e) => formik.resetForm()}
+            onClick={() => formik.resetForm()}
             className="mt-5 btn btn-outline-primary"
           >
             Clear
