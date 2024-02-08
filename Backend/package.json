@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HARSH0205-create/DataNeuronBackend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HARSH0205-create/DataNeuronBackend/issues"
+  },
+  "homepage": "https://github.com/HARSH0205-create/DataNeuronBackend#readme",
+  "description": ""
+}
