@@ -67,7 +67,7 @@ export default function UserForm(props: any) {
   }, [selectedUser]);
 
   return (
-    <div className="container mt-5 center">
+    <div  className="container mt-5 center">
       <h1>User Form</h1>
       <div className="row mt-5">
         <form onSubmit={formik.handleSubmit}>

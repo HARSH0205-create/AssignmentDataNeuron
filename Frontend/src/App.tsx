@@ -46,15 +46,17 @@ function App() {
   return (
     <div>
       <ResponsiveGridLayout
-        isDraggable={false}
-        isResizable={false}
+        isDraggable={true}
+        isResizable={true}
         breakpoints={breakpoints}
         cols={cols}
+        preventCollision={true}
+        autoSize={false}
       >
-        <div key="1" data-grid={{ x: 0, y: 0, w: 1, h: 4 }}>
+        <div key="1" id="1" data-grid={{ x: 0, y: 0, w: 1, h: 3.5 }}>
           <UserForm reLoading={reLoading} setreLoading={setreLoading} selectedUser={selectedUser}/>
         </div>
-        <div key="2" data-grid={{ x: 2, y: 0, w: 3, h: 4 }}>
+        <div key="2" id="2" data-grid={{ x: 2, y: 0, w: 3, h: 3.5 }}>
           <div className="container mt-5 center">
             <UserTable selectedUser={selectedUser} setSelectedUser={setSelectedUser} users={users} loading={loading}/>
           </div>
