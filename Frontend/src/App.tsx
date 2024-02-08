@@ -14,14 +14,14 @@ const breakpoints = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 320 };
 const cols = { lg: 4, md: 4, sm: 1, xs: 1, xxs: 1 };
 
 function App() {
-
   const [users, setUsers] = useState([]);
 
-  const [selectedUser , setSelectedUser] = useState(null)
+  const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [reLoading, setreLoading] = useState(true);
 
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     getUserData()
@@ -33,30 +33,44 @@ function App() {
       });
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     getUserData()
-    .then((users: any) => {
-      setUsers(users);
-    })
-    .finally(() => {
-      setLoading(false);
-    });
-  } , [reLoading])
+      .then((users: any) => {
+        setUsers(users);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+
+      console.log(isDragging)
+  }, [reLoading]);
 
   return (
     <div>
       <ResponsiveGridLayout
         isDraggable={true}
         isResizable={true}
+        isBounded={true}
         breakpoints={breakpoints}
         cols={cols}
+        onDragStart={() => setIsDragging(true)}
+        onDragStop={() => setIsDragging(false)}
       >
         <div key="1" id="1" data-grid={{ x: 0, y: 0, w: 1, h: 3.5 }}>
-          <UserForm reLoading={reLoading} setreLoading={setreLoading} selectedUser={selectedUser}/>
+          <UserForm
+            reLoading={reLoading}
+            setreLoading={setreLoading}
+            selectedUser={selectedUser}
+          />
         </div>
         <div key="2" id="2" data-grid={{ x: 2, y: 0, w: 3, h: 3.5 }}>
           <div className="container mt-5 center">
-            <UserTable selectedUser={selectedUser} setSelectedUser={setSelectedUser} users={users} loading={loading}/>
+            <UserTable
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+              users={users}
+              loading={loading}
+            />
           </div>
         </div>
       </ResponsiveGridLayout>
